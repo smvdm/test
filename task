@@ -1,0 +1,15 @@
+#!/bin/bash
+f_mask='ch oo'
+dir_list=`ls -F $HOME | grep /`
+exp='Sushi and Sashimi'
+f_list='flist'
+if [ -e $f_list ]
+then
+  rm $f_list
+fi
+for j in $f_mask
+do
+  v6=`find $dir_list -name \*$j\* | xargs grep -H "$exp" |
+      cut -f 1 -d : >> $f_list`
+done
+exit 0
